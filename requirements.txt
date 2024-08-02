@@ -1,1 +1,2 @@
 yfinance
+notebook==7.1.2

@@ -1,6 +1,6 @@
 # training_evaluation.py
-from agent import Agent
-from environment import Env
+from .agent import Agent
+from .environment import Env
 
 def play_one_episode(agent, env):
     state = env.reset()

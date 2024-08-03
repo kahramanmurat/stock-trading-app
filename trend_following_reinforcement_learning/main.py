@@ -1,12 +1,13 @@
 # main.py
 import pandas as pd
 import numpy as np
-from data_module import fetch_data, preprocess_data
-from feature_engineering import create_features
-from training_evaluation import train_and_evaluate
-from utils import plot_data, plot_returns
+from .data_module import fetch_data, preprocess_data
+from .feature_engineering import create_features
+from .training_evaluation import train_and_evaluate
+from .utils import plot_data, plot_returns
 
-def main():
+
+def run_reinforcement_learning():
     ticker_symbol = 'SPY'
     df = fetch_data(ticker_symbol)
     plot_data(df)
@@ -25,5 +26,8 @@ def main():
     plot_returns(train_data, 'Train Data Cumulative Log Return', 'train_cumulative_return.png')
     plot_returns(test_data, 'Test Data Cumulative Log Return', 'test_cumulative_return.png')
 
+
+
+
 if __name__ == "__main__":
-    main()
+    run_reinforcement_learning()

@@ -84,7 +84,7 @@ class QLearningTrader:
             f.write("Q-Table:\n")
             f.write(self.q_table.to_string())
 
-if __name__ == "__main__":
+def run_q_learning_trader():
     trader = QLearningTrader('AAPL', '2010-01-01', '2020-01-01')
     trader.train()
     final_value = trader.simulate_trading()

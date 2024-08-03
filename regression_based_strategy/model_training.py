@@ -1,6 +1,7 @@
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from tqdm import tqdm
 
 def train_linear_regression(Xtrain, Ytrain):
     model = LinearRegression()
@@ -8,13 +9,15 @@ def train_linear_regression(Xtrain, Ytrain):
     return model
 
 def train_logistic_regression(Xtrain, Ytrain, C=10):
-    model = LogisticRegression(C=C)
-    model.fit(Xtrain, Ytrain > 0)
+    model = LogisticRegression(C=C, max_iter=1000)
+    for i in tqdm(range(1000), desc="Training Logistic Regression"):
+        model.fit(Xtrain, Ytrain > 0)
     return model
 
 def train_random_forest(Xtrain, Ytrain):
-    model = RandomForestClassifier(random_state=2)
-    model.fit(Xtrain, Ytrain > 0)
+    model = RandomForestClassifier(random_state=2, n_estimators=100)
+    for i in tqdm(range(100), desc="Training Random Forest"):
+        model.fit(Xtrain, Ytrain > 0)
     return model
 
 def evaluate_regression_model(model, Xtrain, Ytrain, Xtest, Ytest):

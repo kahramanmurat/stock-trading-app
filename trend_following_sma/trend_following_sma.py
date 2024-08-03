@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import numpy as np
 import os
+from tqdm import tqdm
 
 def download_data(ticker, start_date="2000-01-01"):
     end_date = datetime.today().strftime('%Y-%m-%d')
@@ -46,7 +47,7 @@ def plot_sma(df, ticker, output_folder):
 def assign_is_invested(df):
     is_invested = False
     is_invested_list = []
-    for index, row in df.iterrows():
+    for index, row in tqdm(df.iterrows(), total=len(df), desc="Assigning investment signals"):
         if is_invested and row['sell']:
             is_invested = False
         if not is_invested and row['buy']:
@@ -74,8 +75,8 @@ def grid_search(df):
     best_fast = None
     best_slow = None
     best_score = float('-inf')
-    for fast in range(3, 30):
-        for slow in range(fast + 5, 50):
+    for fast in tqdm(range(3, 30), desc="Grid search - fast period"):
+        for slow in tqdm(range(fast + 5, 50), desc=f"Grid search - slow period (fast={fast})"):
             score, _ = trend_following(df, fast, slow)
             if score > best_score:
                 best_fast = fast
@@ -106,7 +107,7 @@ def plot_wealth(df, output_folder):
     plt.savefig(os.path.join(output_folder, 'wealth_over_time.png'))
     plt.close()
 
-if __name__ == "__main__":
+def run_trend_following_sma():
     strategy_name = 'Trend_Following_SMA'
     output_folder = os.path.join('plot_data', strategy_name)
     if not os.path.exists(output_folder):
@@ -144,3 +145,6 @@ if __name__ == "__main__":
     print("Saving dataframe to CSV...")
     df.to_csv(os.path.join(output_folder, 'spy_data.csv'), index=False)
     print("All tasks completed.")
+
+if __name__ == "__main__":
+    run_trend_following_sma()

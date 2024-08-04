@@ -8,7 +8,7 @@ stock-trading-app/
 │
 ├── data/ # Placeholder for data storage
 │
-├── notebooks/
+├── notebooks/ # Jupyter notebooks for various stages
 │ ├── data_preprocessing.ipynb
 │ ├── model_training.ipynb
 │ ├── strategy_simulation.ipynb

@@ -1,3 +1,9 @@
 yfinance
 notebook==7.1.2
 tqdm
+pandas
+numpy
+scikit-learn
+datetime
+matplotlib
+

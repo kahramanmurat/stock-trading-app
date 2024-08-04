@@ -4,6 +4,7 @@ This project aims to develop an end-to-end algorithmic trading strategy using ma
 
 ## Project Structure
 
+```sh
 stock-trading-app/
 │
 ├── data/ # Placeholder for data storage
@@ -30,7 +31,7 @@ stock-trading-app/
 ├── main.py # Main script to run the application
 ├── LICENSE # License file
 ├── README.md # Project README file
-└── .gitignore # Git ignore file
+└── .gitignore # Git ignore file```
 
 ## Getting Started
 

@@ -31,7 +31,8 @@ stock-trading-app/
 ├── main.py # Main script to run the application
 ├── LICENSE # License file
 ├── README.md # Project README file
-└── .gitignore # Git ignore file```
+└── .gitignore # Git ignore file
+```
 
 ## Getting Started
 

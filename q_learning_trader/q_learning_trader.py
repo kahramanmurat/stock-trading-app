@@ -85,7 +85,7 @@ class QLearningTrader:
             f.write(self.q_table.to_string())
 
 def run_q_learning_trader():
-    trader = QLearningTrader('AAPL', '2010-01-01', '2020-01-01')
+    trader = QLearningTrader('AAPL', '2010-01-01', '2024-08-03')
     trader.train()
     final_value = trader.simulate_trading()
     print(f"Final portfolio value: ${final_value:.2f}")

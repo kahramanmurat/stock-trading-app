@@ -47,7 +47,7 @@ def plot_sma(df, ticker, output_folder):
 def assign_is_invested(df):
     is_invested = False
     is_invested_list = []
-    for index, row in tqdm(df.iterrows(), total=len(df), desc="Assigning investment signals"):
+    for index, row in df.iterrows():
         if is_invested and row['sell']:
             is_invested = False
         if not is_invested and row['buy']:
@@ -75,8 +75,8 @@ def grid_search(df):
     best_fast = None
     best_slow = None
     best_score = float('-inf')
-    for fast in tqdm(range(3, 30), desc="Grid search - fast period"):
-        for slow in tqdm(range(fast + 5, 50), desc=f"Grid search - slow period (fast={fast})"):
+    for fast in range(3, 30):
+        for slow in range(fast + 5, 50):
             score, _ = trend_following(df, fast, slow)
             if score > best_score:
                 best_fast = fast
